@@ -1,23 +1,55 @@
 # AV-alused_KasparKannel
+Selles kursus käisin ma põhjalikult läbi erinevad HTTP serveritega eksperimenteerimised ja sain teha mitmeid serveritega näiteid.
+Samuti harjutasin ma siin IP aadressidega ja õppisin üleüldist Serverite ja networkingu teemat.
 
-## Pealkiri1
 
-The missile knows where it is at all times. It knows this because it knows where it isn't, by subtracting where it is, from where it isn't, or where it isn't, from where it is, whichever is greater, it obtains a difference, or deviation. The guidance sub-system uses deviations to generate corrective commands to drive the missile from a position where it is, to a position where it isn't, and arriving at a position where it wasn't, it now is. Consequently, the position where it is, is now the position that it wasn't, and it follows that the position where it was, is now the position that it isn't. In the event of the position that it is in is not the position that it wasn't, the system has required a variation. The variation being the difference between where the missile is, and where it wasn't. If variation is considered to be a significant factor, it too, may be corrected by the GEA. However, the missile must also know where it was. The missile guidance computance scenario works as follows: Because a variation has modified some of the information the missile has obtained, it is not sure just where it is, however it is sure where it isn't, within reason, and it knows where it was. It now subracts where it should be, from where it wasn't, or vice versa. By differentiating this from the algebraic sum og where it shouldn't be, and where it was. It is able to obtain a deviation, and a variation, which is called "air"
+Konspekteeri Github repositooriumisse praktilised käsurea näited ja ülesanded koos enda kommentaaridega ja ka küsimustega
 
-## loetelu
-- element 1
-- asi2
-- asi6
-  - teine alamasi
-- dsds
+## Udacity konspekt
 
-## kood
-`hello world`
-```
+printf - selle käsuga saame välja printida stringi või käsu mis me selle järele lisame nt HTTP requestid
 
-asdasd
-daaaaaaa
+Layerid: Application, Transport, Internet, Hardware
 
+Protocols: HTTP/SSH, TCP/UDP, IP, Wifi/ethernet/DSL
+
+Muud kospekti mõisted: URL, password, sessioonid, IP aadressid, acces pointid
+
+Pordi numbrid eristavad sama hosti juures erinevaid applikatsioone ja sessioone
+    nt: 80 - HTTP, 22 - SSH, 443 - HTTPS
+tavaliselt saab ainelt üks program masina peale korraga kuulata ühte porti. Kuid seda saab leevendada sellega kui programm jooksutab mitu thread'i korraga või pidevalt loop'ib erinevate ühenduste vahel.
+
+DNS - Domain Name Registry, selle kaudu saavad kasutajad mingi aadressi kaudu lehekülgedele minna
+CNAME - canonical name
+AAAA - IPv6 adress
+NS - DNS name server
+
+DNS'il on mitu tasemet mis hoiavad erinval tasemel andmeid domeenide ja nimede kohta, nii cache'ist kuni global root serveriteni
+
+subdomainid on täpsustesed erinevate lehtede kohta, mõnikord neid vaja ei ole, kui veebisaiti ei hoita kindlas serveris. nt github'i saab ilma www. ette panemata, sest neid servereid on nii palju
+
+IPv4 vs IPv6 - ipv4 on vanem interneti protokoll, selle aadressid on teistsugused nt . eraldatud 4 numbri kaupa. 
+
+IP aadressid on kõik bit'ides ja baitides
+
+## Käsurea näited
+karl@ip-10-20-27-153:~$ man nc - toob ette nc manual page'i, see pakub palju infot kuidas seal asju üles sättida.
+
+lsof kasuga saab näha mis programmid hetkel mingit porti kuulavad lisa -i lõppu, et see näitaks ainult interneti socket'teid
+  nt: sudu lsof -i
+
+printf 'HTTP/1.1 302 Moved\r\nLocation: https://www.eff.org/' | nc -l 2345   -  browser näitab eff.org kodulehte ja prindib sinu browseri requesti terminali
+  
+karl@ip-10-20-27-153:~$ ping google.com - see hakkab järjest google'it pingima, kui sa just manuaalselt ei sea mitu korda ta seda tegema peab
+
+host -t a google.com - selle kaudu saab näiteks google'i IP aadressi.
+
+dig ww.udacity.com - dig näitab sarnast infot hostile, aga seda rohkem loetavas vormis scriptidele
+
+printf 'HEAD / HTTP/1.1\r\n Host: en.wikipedia.org\r\n\r\n' | nc en.wikipedia.org 80
+        ülevaloleva käsuga saame wikipediast HTTP headerid ja palju muud infot ning cookie'si
+
+ping -c4 8.8.8.8 - see saadab siis neli korda sellele aadressile packet'eid
 
 REE
 ```
