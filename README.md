@@ -3,7 +3,6 @@ Selles kursus käisin ma põhjalikult läbi erinevad HTTP serveritega eksperimen
 Samuti harjutasin ma siin IP aadressidega ja õppisin üleüldist Serverite ja networkingu teemat.
 
 
-Konspekteeri Github repositooriumisse praktilised käsurea näited ja ülesanded koos enda kommentaaridega ja ka küsimustega
 
 ## Udacity konspekt
 
